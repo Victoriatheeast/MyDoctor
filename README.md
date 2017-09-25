@@ -5,6 +5,7 @@
 Assumptions: the user input the data in the expected format and fill all the entries while filling out the form
 If you would like to re-migrate the database, please first sign out, re-migrate the database, and then restart the server
 
+
 <hr>
 # How to Run #
 
@@ -12,9 +13,15 @@ If you would like to re-migrate the database, please first sign out, re-migrate 
 2. 'bundle install'
 3. 'rails db:migrate'
 4. 'rails db:seed'
+5. 'rails server'
+6. Go to http://localhost:3000 in web browser
 5. Administrator: Admin@gmail.com Pass: admin
 6. User: victoria27wu@gmail.com pass: test
+<hr>
 	pp@gmail.com pass: yes
 7. For adding new imge of the doctor: http://www.disneyimage.com/_/rsrc/1407522016672/Funny-Doctor-Cartoons/Funny-Doctor-Cartoon-Image_4.png?height=400&width=400
+
+# Credit #
+Content from Zocdoc for educational use
 
 

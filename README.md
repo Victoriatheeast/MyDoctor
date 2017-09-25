@@ -9,6 +9,7 @@
 ![screen shot 2017-09-25 at 12 17 17 pm](https://user-images.githubusercontent.com/16792248/30821990-f34eea9c-a1ec-11e7-9d6d-159b8d7a0c9f.png)
 
 <hr>
+
 # How to Run #
 
 1. Download the ZIP of this repository and cd to the root directory

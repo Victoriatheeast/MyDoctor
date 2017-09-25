@@ -1,0 +1,58 @@
+
+<h1>Statistics of MyDoctor</h1>
+<div class = "row">
+<div class = "col-lg-8">
+<h4>Doctors By Specialty</h4>
+<%= pie_chart all_doctors.joins(:specialty).group(:name).count%>
+</div>
+<div class = "col-lg-8">
+<h4>Doctors By Practice</h4>
+<%= pie_chart all_doctors.joins(:practice).group(:name).count%>
+</div>
+<div class = "col-lg-8">
+<h4>Filled and Unfilled TimeSlots by Doctors</h4>
+<%= bar_chart all_doctors.map{|doctor| {name: doctor.full_name, data: doctor.time_slots.group(:is_filled).count}}%>
+</div>
+<div class = "col-lg-8">
+<h3><%= all_appointments.count %> appointments have been made</h3>
+<p></p>
+<h4>Appointments by Date</h4>
+<%= column_chart all_appointments.joins(:time_slot).group(:date).count%>
+</div>
+</div>
+<h3>There are altogether <%= total_number_of_users %> users</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+      <tr class="bg-info">
+        <th>User Name</th>
+        <th>Email Address</th>
+        <th>Access</th>
+        <th>Points Earned</th>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% all_users.each do |user|%>
+    <tr>
+      <td><%= user.name%></td>
+      <td><%= user.email_address%></td>
+      <% if user.admin == 't'%>
+      <td>Admin</td>
+      <% else %>
+      <td>User</td>
+      <% end %>
+      <% user.appointments.each do |appointment| %>
+      <% if appointment.is_completed == 't' && appointment.is_reviewed == 't'%>
+        <% user.points += 20 %>
+      <% elsif appointment.is_completed == 't' && appointment.is_reviewed == 'f'%>
+        <% user.points += 10 %>
+      <% end %> 
+      <% end %>
+      <td><%= user.points%> points</td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+

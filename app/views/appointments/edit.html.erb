@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <li class="list-group-item active">Appointment</li>
+  <li class="list-group-item">Date: <%= @appointment.time_slot.date%></li>
+  <li class="list-group-item">Start from: <%= @appointment.time_slot.start_time%></li>
+  <li class="list-group-item">To: <%= @appointment.time_slot.end_time%></li>
+  <li class="list-group-item">Duration: <%= @appointment.time_slot.duration%></li>
+  <li class="list-group-item">Doctor: <%= @appointment.time_slot.doctor.first_name%> <%= @appointment.time_slot.doctor.last_name%></li>
+  <li class="list-group-item">Patient: <%= User.find_by(id: @appointment.user_id).name%></li>
+</ul>
+
+<%= form_tag "/appointments/#{@appointment.id}", method: 'patch' do %>
+
+  <p>
+    <%= label_tag "review" %>
+  <br>
+    <%= text_area_tag "review", @appointment.review %>
+  </p>
+  <p>
+      <%= submit_tag "Complete and Review", class: 'button' %>
+  </p>
+
+<% end %>

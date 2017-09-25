@@ -1,0 +1,41 @@
+<h3>Appointments</h3>
+ 
+<table class="table table-striped table-hover">
+    <thead>
+      <tr class="bg-primary">
+        <th>Last Modified</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @appointments.each do |appointment|%>
+		<tr>
+			<td><%= appointment.updated_at %></td>
+      <td><%= appointment.time_slot.start_time %></td>
+      <td><%= appointment.time_slot.end_time %></td>
+      <td><%= User.find_by(id: appointment.user_id).name %></td>
+			<td><%= link_to "#{appointment.time_slot.doctor.first_name} #{appointment.time_slot.doctor.last_name}", "/doctors/#{appointment.time_slot.doctor.id}"%></td>
+      <% if User.find_by(id: session["user_id"]).admin == 't'%>
+        <td><%= link_to "View Review", "/appointments/#{appointment.id}"%></td>
+        <% elsif appointment.is_completed == 'f' %>
+          <td><%= link_to "Complete", "/appointments/#{appointment.id}/edit" %></td>
+        <% elsif appointment.is_reviewed == 't'  %>
+          <td><%= link_to "View", "/appointments/#{appointment.id}"%> or <%= link_to "Edit", "/appointments/#{appointment.id}/edit"%> review</td>
+        <% else %>
+          <td><%= link_to "Please Review", "/appointments/#{appointment.id}/edit"%></td>
+        <% end %>
+      <%if appointment.is_completed == 'f'%>
+       <td><%= link_to "Cancel", "/appointments/#{appointment.id}", method: 'delete' %></td>
+       <% else %>
+       <td></td>
+      <% end %>
+		</tr>
+	<% end %>
+</tbody>
+</table>

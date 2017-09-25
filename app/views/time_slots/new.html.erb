@@ -1,0 +1,33 @@
+<h2>Add New Time Slot</h2>
+
+<%= form_tag "/time_slots" do %>
+
+  <p>
+    <%= collection_select(:doctor_id, :id, Doctor.all, :id, :full_name,  prompt:"Select A doctor")%>
+        Didn't find it? <%= link_to "Add New Doctor", "/doctors/new"%>
+  </p>
+
+  <p>
+    <%= label_tag "start time (Please the following format: 2017-4-10 09:30)" %>
+    <%= text_field_tag "start_time" %>
+  </p>
+
+  <p>
+    <%= label_tag "end time (Please the following format: 2017-4-10 09:30)" %>
+    <%= text_field_tag "end_time" %>
+  </p>
+
+  <p>
+    <%= label_tag "duration in minutes" %>
+    <%= text_field_tag "duration" %>
+  </p>
+
+  <p>
+      <%= submit_tag "Add Availability", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/" %>
+  </p>
+
+<% end %>

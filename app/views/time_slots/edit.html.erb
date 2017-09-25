@@ -1,0 +1,32 @@
+<h2>Edit Time Slot</h2>
+
+
+<%= form_tag "/time_slots/#{@time_slot.id}", method: 'patch' do %>
+
+  <p><b>Doctor: <%= Doctor.find_by(id: @time_slot.doctor_id).first_name%>
+  <%= Doctor.find_by(id: @time_slot.doctor_id).last_name %></b></p>
+
+  <p>
+    <%= label_tag "start time (Please the following format: 2017-4-10 09:30)" %>
+    <%= text_field_tag "start_time" %>
+  </p>
+
+  <p>
+    <%= label_tag "end time (Please the following format: 2017-4-10 09:30)" %>
+    <%= text_field_tag "end_time" %>
+  </p>
+
+  <p>
+    <%= label_tag "duration in minutes" %>
+    <%= text_field_tag "duration", @time_slot.duration %>
+  </p>
+
+  <p>
+      <%= submit_tag "Update Availability", class: 'button' %>
+
+      or
+
+      <%= link_to "Cancel", "/doctors/#{@time_slot.doctor_id}" %>
+  </p>
+
+<% end %>

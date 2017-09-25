@@ -1,0 +1,42 @@
+Doctor
+  first_name: string
+  last_name: string
+  specialty_id: integer
+  practice_id: integer
+  professional_statement: longtext
+  profile_img_url: string
+
+Specialty
+  name: string
+
+Practice
+  name: string
+  location: string
+
+TimeSlot
+  doctor_id: integer
+  date: string
+  start_time: datetime
+  end_time: datetime
+  duration: integer
+  is_filled: bool
+
+User
+  name: string
+  email_address: string
+  password_digest: string
+  admin: bool
+  points: integer
+
+Appointment
+  time_slot_id: integer
+  user_id: integer
+  updated_at: datetime
+  review: mediumtext
+  is_reviewed: bool
+  is_completed: bool
+
+
+
+
+

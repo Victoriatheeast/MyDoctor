@@ -1,0 +1,17 @@
+<h2>My Profile</h2>
+
+<p>
+  <strong>Name: </strong> <%= @user.name %>
+</p>
+<p>
+  <strong>Email Address: </strong> <%= @user.email_address %>
+</p>
+<p>
+  <strong>Password: </strong> <%= @user.password %>
+</p>
+<p>
+	<strong>Points: </strong><%= @user.points %>
+</p>
+<p>
+	<%= link_to "Update My Profile", "/users/#{@user.id}/edit"%>
+</p>	

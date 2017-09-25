@@ -1,0 +1,14 @@
+<h4>Add New Specialty</h4>
+
+<%= form_tag "/specialties" do %>
+
+  <p>
+    <%= label_tag "name" %>
+    <%= text_field_tag "name" %>
+  </p>
+
+  <p>
+      <%= submit_tag "Submit", class: 'button' %>
+  </p>
+
+<% end %>

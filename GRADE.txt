@@ -1,0 +1,22 @@
+Milestone #1 Grade - Victoriatheeast
+
+Score: (10/10)
+
+Nice work!
+
+- Unless a column is going to potentially have a lot of characters (e.g., a user's personal bio), you
+should use the `string` column, instead of `text`.
+
+- Columns such as `start_time` and `end_time` should be of type `datetime`
+
+-----
+
+Milestone #2 Grade
+
+Score: (10/10)
+
+Nice work.
+
+- Your resources look great!
+
+
